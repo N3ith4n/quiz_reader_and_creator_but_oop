@@ -1,7 +1,11 @@
 #add class
+class Animation:
+        
+        #add __init__ to make the speed of the animations customizable
+        def __init__(self, speed=0.03):
+                self.speed = speed
 
-#add __init__ to make the speed of the animations customizable
+        #def spec print
 
-#def spec print
 
-#def animated center
+        #def animated center
