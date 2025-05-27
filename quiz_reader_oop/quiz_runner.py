@@ -43,5 +43,34 @@ class QuizRunner:
                 return questions
 
 #def run
+        def run(self):
+                self.anim.animated_center("Loading Quiz...")
+                questions = self.load_questions()
+
+                if not questions:
+                        self.anim.spec_print("\033[31mNo questions found in the quiz file.\033[39m\n")
+                        return
+
+                self.anim.spec_print(f"\033[32mLoaded {len(questions)} questions.\033[39m\n")
+                random.shuffle(questions)
+                score = 0
+
+                for question_data in questions:
+                        self.anim.spec_print("\033[36m" + question_data["question"] + "\033[39m", new_line=True)
+
+                        for letter, answer in question_data["choices"].items():
+                                self.anim.spec_print(f"\033[33m{letter}. {answer}\033[39m", new_line=True)
+
+                        user_answer = input("\033[34mYour answer: ").lower()
+
+                        if user_answer == question_data["correct"]:
+                                self.anim.spec_print("\033[32m✅ Correct!\033[39m\n")
+                                score += 1
+                        else:
+                                correct_choice = question_data["correct"]
+                                correct_answer = question_data["choices"][correct_choice]
+                                self.anim.spec_print(f"\033[31m❌ Wrong.\033[39m The correct answer was {correct_choice}. {correct_answer}\n")
+
+                self.anim.spec_print(f"\033[32mYour final score: {score}/{len(questions)}\033[39m\n")
 
 #def ask play again
