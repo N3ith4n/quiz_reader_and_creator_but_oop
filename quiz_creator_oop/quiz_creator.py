@@ -2,7 +2,7 @@
 import time
 
 #imports but the animations.py this time
-from animation import Animation
+from animations import Animation
 
 #class
 class QuizCreator:
