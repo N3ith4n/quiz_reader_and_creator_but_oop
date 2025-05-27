@@ -74,3 +74,8 @@ class QuizRunner:
                 self.anim.spec_print(f"\033[32mYour final score: {score}/{len(questions)}\033[39m\n")
 
 #def ask play again
+        def ask_play_again(self):
+                self.anim.spec_print("\033[96mDo you want to play again? (y/n): ", new_line=False)
+                answer = input().strip().lower()
+                print("\033[39m", end="")
+                return answer == "y"
